@@ -55,20 +55,18 @@ const emailField =
   '<div class="form-group"><label>E-mail (для отправки счета и уведомлений о заказе) <span>*</span></label><input name="EMAIL" class="form-control empty" type="email" required /><div class="invalid-feedback">Обязательное поле</div></div>';
 const questionField =
   '<div class="form-group"><label>ИНН и реквизиты (если Вы юридическое лицо)</label><textarea name="QUESTION" class="form-control empty"></textarea><div class="invalid-feedback">Обязательное поле</div></div>';
-const subjectField =
-  '<div class="form-group"><label>Тема</label><input name="SUBJECT" class="form-control empty" type="text" /></div>';
 
 const formModals = {
   ranx_landing_form_callback: {
     title: 'Заказать звонок',
-    body: formShell('ranx_landing_form_callback', nameField + phoneField + subjectField),
+    body: formShell('ranx_landing_form_callback', nameField + phoneField),
     class: 'modal-form-callback',
   },
   ranx_landing_form_order: {
     title: 'Оставить заявку',
     body: formShell(
       'ranx_landing_form_order',
-      nameField + phoneField + emailField + questionField + subjectField,
+      nameField + phoneField + emailField + questionField,
     ),
     class: 'modal-form-order',
   },
@@ -93,20 +91,12 @@ const js = `/* generated */
       return new Promise(function (resolve, reject) {
         if (component === 'form' && action === 'getModal') {
           const formCode = String(post.formCode || '');
-          const subject = String(post.subject || '');
           const modal = FORM_MODALS[formCode];
           if (!modal) {
             reject({ errors: [{ message: 'Form not found' }] });
             return;
           }
-          let body = modal.body;
-          if (subject) {
-            body = body.replace(
-              'name="SUBJECT"',
-              'name="SUBJECT" value="' + subject.replace(/"/g, '&quot;') + '"',
-            );
-          }
-          resolve({ data: { title: modal.title, body, class: modal.class || '' } });
+          resolve({ data: { title: modal.title, body: modal.body, class: modal.class || '' } });
           return;
         }
 
