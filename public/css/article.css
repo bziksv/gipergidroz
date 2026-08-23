@@ -42,7 +42,7 @@
 .seo-article__figure--contain img {
   width: auto;
   max-width: 100%;
-  max-height: 520px;
+  max-height: 360px;
   margin: 0 auto;
   object-fit: contain;
 }
@@ -653,7 +653,7 @@
 .seo-split__media img {
   width: 100%;
   height: auto;
-  max-height: 520px;
+  max-height: 360px;
   object-fit: contain;
   border-radius: 10px;
   display: block;
