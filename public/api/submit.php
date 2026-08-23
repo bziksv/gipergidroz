@@ -120,9 +120,23 @@ if (str_contains($from, '@')) {
 
 $mailOk = mail($to, $encodedSubject, $body, implode("\r\n", $headers), $extraParams);
 
-$logDir = dirname(__DIR__) . '/_submissions';
-if (!is_dir($logDir)) {
-    @mkdir($logDir, 0755, true);
+$logCandidates = [
+    getenv('GIPERGIDROZ_FORM_LOG_DIR') ?: '',
+    '/var/www/amplipuls_su_usr/data/logs/gipergidroz-forms',
+    dirname(__DIR__) . '/_submissions',
+];
+$logDir = '';
+foreach ($logCandidates as $candidate) {
+    if ($candidate === '') {
+        continue;
+    }
+    if (!is_dir($candidate)) {
+        @mkdir($candidate, 0775, true);
+    }
+    if (is_dir($candidate) && is_writable($candidate)) {
+        $logDir = $candidate;
+        break;
+    }
 }
 $logLine = json_encode(
     [
@@ -141,7 +155,9 @@ $logLine = json_encode(
     ],
     JSON_UNESCAPED_UNICODE
 );
-@file_put_contents($logDir . '/' . date('Y-m-d') . '.log', $logLine . "\n", FILE_APPEND | LOCK_EX);
+if ($logDir !== '') {
+    @file_put_contents($logDir . '/' . date('Y-m-d') . '.log', $logLine . "\n", FILE_APPEND | LOCK_EX);
+}
 
 if (!$mailOk) {
     http_response_code(500);
