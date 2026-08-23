@@ -1,28 +1,35 @@
-/* Carrier logos: DL and Boxberry PNGs have large empty margins in the file */
-.block13-2-slider,
-.block13-2-brand-items,
-.block13-2-slide-wrap,
-.block13-2-brand-item {
-  overflow: visible;
+.carrier-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px 56px;
+  padding: 12px 0 4px;
 }
 
-.block13-2-brand-item {
-  width: auto;
-}
-
-.block13-2-brand-item img {
-  width: 110px;
-  height: auto;
-  margin: 0 auto;
+.carrier-logos__item {
   display: block;
+  height: 44px;
+  width: auto;
+  max-width: 200px;
 }
 
-.block13-2-slide-wrap {
-  padding: 0 48px;
+.carrier-logos__item--dellin {
+  height: 36px;
+  max-width: 260px;
 }
 
-.block13-2-brand-item img[alt="Деловые Линии"],
-.block13-2-brand-item img[alt="Boxberry"] {
-  transform: scale(2.5);
-  transform-origin: center center;
+@media (max-width: 767px) {
+  .carrier-logos {
+    gap: 28px 40px;
+  }
+
+  .carrier-logos__item {
+    height: 36px;
+    max-width: 160px;
+  }
+
+  .carrier-logos__item--dellin {
+    height: 30px;
+    max-width: 220px;
+  }
 }

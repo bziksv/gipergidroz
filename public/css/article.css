@@ -206,6 +206,37 @@
   margin: 0;
 }
 
+.seo-article__video-inner {
+  text-align: center;
+}
+
+.seo-article__video-lead {
+  color: #555;
+  max-width: 720px;
+  margin: 0 auto 24px;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.seo-article__video-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.seo-article__video-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 @media (max-width: 767px) {
   .seo-article__hero h1 {
     font-size: 28px;

@@ -1778,7 +1778,7 @@ display: block;
         <div class="block-wrap flex-order" id="block_371" data-order="13" 
         data-id="371" >
         
-<div class="block block13-2 indent-top-50 indent-bot-50 " data-id="371" data-elements='["364","365","366"]'  style="background-color:#ffffff;">
+<div class="block block13-2 indent-top-50 indent-bot-50 " data-id="371" data-elements='["364","365"]'  style="background-color:#ffffff;">
 <div class="maxwidth-theme">
     
 <div class="block-title row">
@@ -1801,83 +1801,14 @@ display: block;
         
 </div>
 
-        <div class="block13-2-slider" id="block13-2-slider-371">
-        <a class="slick-arrow arrow-prev btn-transparent">
-            <svg class="svg"><use xlink:href="/bitrix/templates/ranx-landing/assets/img/block/arrow_prev.svg?1675149157#main"></use></svg>        </a>
-
-        <div class="block13-2-brand-items">
-
-                        <div class="block13-2-slide-wrap">
-                                    <div class="block13-2-brand-item">
-                        
-                        <img class="lazy" data-src="/upload/iblock/c6c/38wfrlfo1qqiqy86d9svbl82j586xot9.png"                             alt="СДЭК" title="СДЭК">
-
-                                    </div>
-                </div>
-                    <div class="block13-2-slide-wrap">
-                                    <div class="block13-2-brand-item">
-                        
-                        <img class="lazy" data-src="/upload/iblock/a1e/fdnk1m9evcq8mt9ilktjldqo1y6c1xnw.png"                             alt="Деловые Линии" title="Деловые Линии">
-
-                                    </div>
-                </div>
-                    <div class="block13-2-slide-wrap">
-                                    <div class="block13-2-brand-item">
-                        
-                        <img class="lazy" data-src="/upload/iblock/d8d/b9dtru7yogjmq0xroltagxlfn6ct8pn5.png"                             alt="Boxberry" title="Boxberry">
-
-                                    </div>
-                </div>
-            </div>
-
-    <a class="slick-arrow arrow-next btn-transparent">
-        <svg class="svg"><use xlink:href="/bitrix/templates/ranx-landing/assets/img/block/arrow_next.svg?1675149157#main"></use></svg>    </a>
-</div>
+        <div class="carrier-logos" aria-label="Транспортные компании">
+            <img class="carrier-logos__item" src="/img/carriers/cdek.svg" alt="СДЭК" width="145" height="41" loading="lazy">
+            <img class="carrier-logos__item carrier-logos__item--dellin" src="/img/carriers/delovye-linii.svg" alt="Деловые Линии" width="244" height="37" loading="lazy">
+        </div>
 
 </div>
 
 </div>
-<script>
-    $(document).ready(function () {
-
-        let $slider = $('#block13-2-slider-371').find('.block13-2-brand-items');
-
-        $slider.on('init reInit afterChange', function(){
-            if (typeof lazyLoadInstance !== 'undefined') {
-                lazyLoadInstance.update();
-            }
-        });
-
-        $slider.slick({
-                        cssEase: 'linear',
-            prevArrow: $slider.siblings('.arrow-prev'),
-            nextArrow: $slider.siblings('.arrow-next'),
-            slidesToShow: 6,
-            slidesToScroll: 1,
-            responsive: [
-                {
-                    breakpoint: 1090,
-                    settings: {
-                        slidesToShow: 4,
-                    }
-                },
-                {
-                    breakpoint: 770,
-                    settings: {
-                        slidesToShow: 2,
-                    }
-                },
-                {
-                    breakpoint: 450,
-                    settings: {
-                        slidesToShow: 1,
-                    }
-                }
-            ],
-        });
-
-    });
-</script>
     </div>
         <div class="block-wrap flex-order" id="block_310" data-order="14" 
         data-id="310" >

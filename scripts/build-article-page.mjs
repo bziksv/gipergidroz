@@ -15,10 +15,33 @@ if (chromeEnd < 0 || tailStart < 0) {
 const chrome = indexBody.slice(0, chromeEnd);
 const tail = indexBody.slice(tailStart);
 
+const videoBlock = fs.readFileSync(
+  path.join(root, 'src/content/article/video-instruction-block.html'),
+  'utf8',
+);
+
+function withVideoBlock(articleInner) {
+  if (articleInner.includes('id="video-instrukciya"')) {
+    return articleInner;
+  }
+
+  let html = articleInner.replace(
+    /(<li><a href="#(?:ladoni|podmyshek|stop)-procedura">[^<]+<\/a><\/li>\n)/,
+    '$1      <li><a href="#video-instrukciya">Видеоинструкция</a></li>\n',
+  );
+
+  const priceSection = '\n  <section class="seo-block" id="klinika-tseny">';
+  if (!html.includes(priceSection)) {
+    console.error('Could not insert video block before klinika-tseny');
+    process.exit(1);
+  }
+
+  return html.replace(priceSection, `\n${videoBlock}${priceSection}`);
+}
+
 function buildPage({ slug, articleFile, title, description, bodyClass = 'page-index' }) {
-  const articleInner = fs.readFileSync(
-    path.join(root, 'src/content/article', articleFile),
-    'utf8',
+  const articleInner = withVideoBlock(
+    fs.readFileSync(path.join(root, 'src/content/article', articleFile), 'utf8'),
   );
 
   const body = `${chrome}
