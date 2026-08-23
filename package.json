@@ -1,0 +1,20 @@
+{
+  "name": "gipergidroz",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "sync": "node scripts/sync-pages.mjs",
+    "predev": "node scripts/generate-bridge.mjs",
+    "dev": "astro dev",
+    "prebuild": "node scripts/generate-bridge.mjs",
+    "build": "astro build",
+    "preview": "astro preview",
+    "screenshots:legal": "node scripts/generate-legal-screenshots.mjs"
+  },
+  "dependencies": {
+    "astro": "^4.16.18"
+  },
+  "devDependencies": {
+    "puppeteer": "^24.43.1"
+  }
+}

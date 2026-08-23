@@ -1,0 +1,20 @@
+{
+  "operator_name": "ООО «АЛЬМАМЕД»",
+  "operator_short": "Оператор",
+  "operator_legal_form": "Оператор",
+  "inn": "3663147243",
+  "ogrn": "1153661007406",
+  "site": "https://gipergidroz.su/",
+  "site_host": "gipergidroz.su",
+  "email": "sale@gipergidroz.su",
+  "phone": "+7 (499) 322-98-09",
+  "phone_href": "+74993229809",
+  "address_legal": "394026, Воронеж, Московский пр-кт, 19, помещ. 1/46",
+  "address_store": "394026, Воронеж, Московский пр-кт, 19, помещ. 1/46",
+  "urls": {
+    "cookie": "/docs/previews/gipergidroz-cookies.png",
+    "personal_data": "/docs/previews/gipergidroz-personal-data.png",
+    "consent": "/docs/previews/gipergidroz-data-consent.png",
+    "recommendation": "/docs/previews/gipergidroz-recommendations.png"
+  }
+}

@@ -1,0 +1,118 @@
+---
+import YandexMetrika from '../components/YandexMetrika.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  bodyClass: string;
+  bodyHtml: string;
+  hasPageCss?: boolean;
+  extraCss?: string;
+}
+
+const {
+  title,
+  description,
+  ogImage = 'https://gipergidroz.su/upload/ranx.landing/37a/ax36ofd6z686peufg7yum468083km7bl.png',
+  bodyClass,
+  bodyHtml,
+  hasPageCss = false,
+  extraCss,
+} = Astro.props;
+
+const templateCss =
+  '/bitrix/cache/css/s2/ranx-landing/template_8a0911acbd68957da94718574a7045f0/template_8a0911acbd68957da94718574a7045f0_v1.css';
+const pageCss =
+  '/bitrix/cache/css/s2/ranx-landing/page_4341f8e532bf24b8ffc79362435f0ecb/page_4341f8e532bf24b8ffc79362435f0ecb_v1.css';
+const templateJs =
+  '/bitrix/cache/js/s2/ranx-landing/template_ebfcb1fc632d9a37b88028c2653da927/template_ebfcb1fc632d9a37b88028c2653da927_v1.js';
+const pageJs =
+  '/bitrix/cache/js/s2/ranx-landing/page_b9fe682f87a370268916571ec7555bb9/page_b9fe682f87a370268916571ec7555bb9_v1.js';
+---
+
+<!doctype html>
+<html xml:lang="ru" lang="ru">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="shortcut icon"
+      href="/bitrix/templates/ranx-landing/assets/img/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>{title}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content={description} />
+    {hasPageCss && <link href={pageCss} type="text/css" rel="stylesheet" />}
+    <link href={templateCss} type="text/css" rel="stylesheet" />
+    {extraCss && <link href={extraCss} type="text/css" rel="stylesheet" />}
+    <style>body { font-family: "IBM Plex Sans", Arial, sans-serif; }</style>
+    <style>
+      .block .block-title .block-title-text {
+        font-weight: 700;
+        font-size: 38px;
+        line-height: 45px;
+      }
+      .block .block-title .block-cattitle {
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 20px;
+      }
+      .block .block-title .block-subtitle {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 27px;
+      }
+      .block .block-title .block-desc {
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 24px;
+      }
+      .block-el-title {
+        font-weight: 700 !important;
+      }
+      .form-group .custom-control.custom-checkbox {
+        max-height: unset !important;
+      }
+    </style>
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content="website" />
+    <script is:inline>
+      if (!window.BX) window.BX = {};
+      if (!window.BX.message)
+        window.BX.message = function (mess) {
+          if (typeof mess === 'object') {
+            for (let i in mess) BX.message[i] = mess[i];
+            return true;
+          }
+        };
+      window.BX.message({
+        LANGUAGE_ID: 'ru',
+        SITE_ID: 's2',
+      });
+      window.BX.bitrix_sessid = function () {
+        return 'astro-local';
+      };
+    </script>
+    <script is:inline src="/bitrix/js/main/core/core.min.js"></script>
+    <script is:inline>
+      BX.Runtime = BX.Runtime || {
+        registerExtension: function () {},
+      };
+      BX.setJSList = function () {};
+      BX.setCSSList = function () {};
+      BX.ajax = BX.ajax || {};
+    </script>
+    <script is:inline src={templateJs}></script>
+    {hasPageCss && <script is:inline src={pageJs}></script>}
+    <script is:inline src="/js/bridge.js"></script>
+  </head>
+  <body class={bodyClass}>
+    <Fragment set:html={bodyHtml.trim()} />
+    <YandexMetrika />
+  </body>
+</html>

@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { loadPage } from '../lib/pages';
+
+const { meta, bodyHtml } = loadPage('index');
+---
+
+<BaseLayout {...meta} bodyHtml={bodyHtml} />

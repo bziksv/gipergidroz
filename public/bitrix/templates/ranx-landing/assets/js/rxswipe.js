@@ -1,0 +1,58 @@
+(function( $ ){
+    $.fn.rxSwipe = function(options){
+        let startX,  startY;
+        let endX, endY;
+        let isExcludedStart;
+        let isExcludedEnd;
+
+        function checkTarget(target)
+        {
+            let result = false;
+            if (!options.exclude)
+                return result;
+
+            $.each(options.exclude, function (i, value) {
+                if ($(target).closest(value).length)
+                    result = true;
+            });
+
+            return result;
+        }
+
+        $(this).on('touchstart', function(e){
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            isExcludedStart = checkTarget(e.target);
+        });
+
+        $(this).on('touchend', function(e){
+            endX = e.changedTouches[0].clientX;
+            endY = e.changedTouches[0].clientY;
+            isExcludedEnd = checkTarget(e.target);
+
+            if (isExcludedStart && isExcludedEnd) {
+                return;
+            }
+
+            const diffX = endX - startX;
+            const diffY = endY - startY;
+            const absX = Math.abs(diffX);
+            const absY = Math.abs(diffY);
+
+            if (absX > absY && absX >= options.threshold){
+                if (diffX > 0 && $.isFunction(options.swipeRight))
+                    options.swipeRight();
+                if (diffX < 0 && $.isFunction(options.swipeLeft))
+                    options.swipeLeft();
+            }
+            if (absX < absY && absY >= options.threshold) {
+                if (diffY < 0 && $.isFunction(options.swipeDown))
+                    options.swipeDown();
+                if (diffY > 0 && $.isFunction(options.swipeUp))
+                    options.swipeUp();
+            }
+        });
+
+        return $(this);
+    };
+})(jQuery);

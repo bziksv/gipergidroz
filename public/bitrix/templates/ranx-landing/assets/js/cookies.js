@@ -1,0 +1,6 @@
+$(document).ready(function() {
+    $(document).on('click', '#cookies .cookies-button', function () {
+        setCookie('COOKIES_CONFIRMED', true);
+        $(this).closest('#cookies').addClass('hide');
+    });
+});
