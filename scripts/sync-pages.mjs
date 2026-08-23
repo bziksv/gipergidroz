@@ -13,6 +13,7 @@ function extractBody(html) {
   body = body.replace(/\/gipergidroz-ladoney\.php/g, '/gipergidroz-ladoney');
   body = body.replace(/\/gipergidroz-podmyshek\.php/g, '/gipergidroz-podmyshek');
   body = body.replace(/\/gipergidroz-stop\.php/g, '/gipergidroz-stop');
+  body = body.replace(/\/gipergidroz-lechenie\.php/g, '/gipergidroz-lechenie');
   return body.trim();
 }
 
