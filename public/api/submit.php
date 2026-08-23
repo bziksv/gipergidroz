@@ -74,6 +74,13 @@ if ($formCode === 'ranx_landing_form_order') {
 
 $formTitle = $formCode === 'ranx_landing_form_order' ? 'Заявка с сайта' : 'Заказ звонка';
 
+$siteName = $config['site'];
+if ($formCode === 'ranx_landing_form_callback') {
+    $mailSubject = "Заказ звонка с сайта {$siteName} — {$name}";
+} else {
+    $mailSubject = "Заявка с сайта {$siteName} — {$name}";
+}
+
 $lines = [
     "Сайт: {$config['site']}",
     "Форма: {$formTitle} ({$formCode})",
@@ -96,7 +103,6 @@ if ($source !== '') {
 $lines[] = 'Время: ' . date('Y-m-d H:i:s');
 
 $body = implode("\n", $lines) . "\n";
-$mailSubject = "{$config['site']}: {$formTitle} — {$name}";
 $encodedSubject = '=?UTF-8?B?' . base64_encode($mailSubject) . '?=';
 
 $from = $config['from'];
