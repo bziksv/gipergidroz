@@ -21,15 +21,11 @@ const PAGE_CONFIG = {
     targets: 'keyword-targets-stop.json',
     article: 'gipergidroz-stop-inner.html',
   },
-  lechenie: {
-    targets: 'keyword-targets-lechenie.json',
-    article: 'gipergidroz-lechenie-inner.html',
-  },
 };
 
 const cfg = PAGE_CONFIG[page];
 if (!cfg) {
-  console.error(`Unknown page: ${page}. Use: ladoney | podmyshek | stop | lechenie`);
+  console.error(`Unknown page: ${page}. Use: ladoney | podmyshek | stop`);
   process.exit(1);
 }
 

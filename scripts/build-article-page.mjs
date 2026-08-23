@@ -72,11 +72,3 @@ buildPage({
   description:
     'Гипергидроз стоп: причины, запах, грибок и лечение ионофорезом дома. Купить аппарат SwiSto3 на gipergidroz.su — ванночки для стоп, доставка по России.',
 });
-
-buildPage({
-  slug: 'gipergidroz-lechenie',
-  articleFile: 'gipergidroz-lechenie-inner.html',
-  title: 'Гипергидроз: лечение, причины и методы — gipergidroz.su',
-  description:
-    'Гипергидроз: причины, симптомы и лечение ионофорезом дома. Ладони, стопы, подмышки — купить аппарат SwiSto3 на gipergidroz.su, доставка по России.',
-});

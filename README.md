@@ -52,15 +52,14 @@ npm run dev
 | `/gipergidroz-ladoney` | Гипергидроз ладоней |
 | `/gipergidroz-podmyshek` | Гипергидроз подмышек |
 | `/gipergidroz-stop` | Гипергидроз стоп |
-| `/gipergidroz-lechenie` | Обзор: лечение гипергидроза |
 
-Редиректы с `.php` URL — в `astro.config.mjs`.
+Редиректы с `.php` URL — в `astro.config.mjs`. `/gipergidroz-lechenie` перенаправляется на главную.
 
 ## SEO-статьи
 
 - Исходники блоков: `src/content/article/*-inner.html`
 - Сборка страниц: `node scripts/build-article-page.mjs`
-- Проверка ключевых слов: `node scripts/check-article-keywords.mjs [ladoney|podmyshek|stop|lechenie]`
+- Проверка ключевых слов: `node scripts/check-article-keywords.mjs [ladoney|podmyshek|stop]`
 - Цели: `src/data/keyword-targets*.json`
 
 ## Юридические документы
