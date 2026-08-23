@@ -123,10 +123,10 @@ const pageJs =
     </script>
     <script is:inline src={templateJs}></script>
     {hasPageCss && <script is:inline src={pageJs}></script>}
-    <script is:inline src="/js/bridge.js"></script>
   </head>
   <body class={bodyClass}>
     <Fragment set:html={bodyHtml.trim()} />
     <YandexMetrika />
+    <script is:inline src="/js/bridge.js"></script>
   </body>
 </html>

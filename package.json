@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "scripts": {
     "sync": "node scripts/sync-pages.mjs",
-    "predev": "node scripts/generate-bridge.mjs",
+    "predev": "node scripts/generate-bridge.mjs && node scripts/generate-mail-config.mjs",
     "dev": "astro dev",
-    "prebuild": "node scripts/generate-bridge.mjs",
+    "prebuild": "node scripts/generate-bridge.mjs && node scripts/generate-mail-config.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "screenshots:legal": "node scripts/generate-legal-screenshots.mjs",

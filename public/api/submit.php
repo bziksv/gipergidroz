@@ -9,11 +9,17 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$config = [
-    'to' => 'sale@gipergidroz.su',
-    'from' => 'noreply@gipergidroz.su',
-    'site' => 'gipergidroz.su',
-];
+$config = is_file(__DIR__ . '/_mail_config.php')
+    ? require __DIR__ . '/_mail_config.php'
+    : [
+        'to' => 'sale@gipergidroz.su',
+        'from' => 'noreply@gipergidroz.su',
+        'site' => 'gipergidroz.su',
+    ];
+
+if (!is_array($config)) {
+    $config = ['to' => 'sale@gipergidroz.su', 'from' => 'noreply@gipergidroz.su', 'site' => 'gipergidroz.su'];
+}
 
 if (is_file(__DIR__ . '/config.php')) {
     $local = require __DIR__ . '/config.php';
@@ -58,6 +64,14 @@ if ($name === '' || $phone === '') {
     exit;
 }
 
+if ($formCode === 'ranx_landing_form_order') {
+    if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        http_response_code(400);
+        echo json_encode(['status' => 'error', 'message' => 'Укажите корректный e-mail']);
+        exit;
+    }
+}
+
 $formTitle = $formCode === 'ranx_landing_form_order' ? 'Заявка с сайта' : 'Заказ звонка';
 
 $lines = [
@@ -83,22 +97,28 @@ $lines[] = 'Время: ' . date('Y-m-d H:i:s');
 
 $body = implode("\n", $lines) . "\n";
 $mailSubject = "{$config['site']}: {$formTitle} — {$name}";
+$encodedSubject = '=?UTF-8?B?' . base64_encode($mailSubject) . '?=';
+
+$from = $config['from'];
+$to = $config['to'];
 
 $headers = [
-    'From: ' . $config['from'],
-    'Content-Type: text/plain; charset=UTF-8',
     'MIME-Version: 1.0',
+    'Content-Type: text/plain; charset=UTF-8',
+    'Content-Transfer-Encoding: 8bit',
+    'From: ' . $from,
+    'X-Mailer: PHP/' . PHP_VERSION,
 ];
 if ($email !== '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $headers[] = 'Reply-To: ' . $email;
 }
 
-$mailOk = mail(
-    $config['to'],
-    $mailSubject,
-    $body,
-    implode("\r\n", $headers)
-);
+$extraParams = '';
+if (str_contains($from, '@')) {
+    $extraParams = '-f' . $from;
+}
+
+$mailOk = mail($to, $encodedSubject, $body, implode("\r\n", $headers), $extraParams);
 
 $logDir = dirname(__DIR__) . '/_submissions';
 if (!is_dir($logDir)) {
@@ -117,9 +137,16 @@ $logLine = json_encode(
             'SOURCE' => $source,
         ],
         'mail' => $mailOk,
+        'to' => $to,
     ],
     JSON_UNESCAPED_UNICODE
 );
 @file_put_contents($logDir . '/' . date('Y-m-d') . '.log', $logLine . "\n", FILE_APPEND | LOCK_EX);
 
-echo json_encode(['status' => 'success', 'mail' => $mailOk]);
+if (!$mailOk) {
+    http_response_code(500);
+    echo json_encode(['status' => 'error', 'message' => 'Не удалось отправить письмо']);
+    exit;
+}
+
+echo json_encode(['status' => 'success']);
