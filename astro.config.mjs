@@ -13,5 +13,6 @@ export default defineConfig({
     '/gipergidroz-ladoney.php': '/gipergidroz-ladoney',
     '/gipergidroz-podmyshek.php': '/gipergidroz-podmyshek',
     '/gipergidroz-stop.php': '/gipergidroz-stop',
+    '/gipergidroz-lechenie.php': '/gipergidroz-lechenie',
   },
 });

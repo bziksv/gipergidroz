@@ -9,7 +9,8 @@
     "prebuild": "node scripts/generate-bridge.mjs",
     "build": "astro build",
     "preview": "astro preview",
-    "screenshots:legal": "node scripts/generate-legal-screenshots.mjs"
+    "screenshots:legal": "node scripts/generate-legal-screenshots.mjs",
+    "sync:legal": "node scripts/sync-legal.mjs"
   },
   "dependencies": {
     "astro": "^4.16.18"

@@ -1,0 +1,16 @@
+---
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import fs from 'node:fs';
+import path from 'node:path';
+
+const title = 'Политика обработки персональных данных — gipergidroz.su';
+const description = 'Политика обработки персональных данных сайта gipergidroz.su. ООО «АЛЬМАМЕД».';
+const bodyHtml = fs.readFileSync(
+  path.join(process.cwd(), 'src/content/legal/personal-data.html'),
+  'utf8',
+);
+---
+
+<LegalLayout title={title} description={description}>
+  <div set:html={bodyHtml} />
+</LegalLayout>

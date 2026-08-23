@@ -154,6 +154,11 @@ declare module 'astro:content' {
   collection: "body";
   data: any;
 }>;
+"legal": Record<string, {
+  id: string;
+  collection: "legal";
+  data: any;
+}>;
 
 	};
 

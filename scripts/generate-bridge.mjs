@@ -4,6 +4,9 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const out = path.join(root, 'public/js/bridge.js');
+const legal = JSON.parse(fs.readFileSync(path.join(root, 'src/data/legal.json'), 'utf8'));
+
+const legalUrls = legal.urls;
 
 const reviews = {
   300: {
@@ -31,13 +34,6 @@ const reviews = {
     body:
       'После долгих лет борьбы с гипергидрозом подмышек я наконец-то нашла аппарат SwiSto3. Его эффективность превзошла все мои ожидания! Раньше я даже не могла выйти на улицу в теплую погоду без мокрых пятен на одежде, но после регулярного использования устройства это больше не проблема.',
   },
-};
-
-const legalUrls = {
-  cookie: '/docs/previews/gipergidroz-cookies.png',
-  personal_data: '/docs/previews/gipergidroz-personal-data.png',
-  consent: '/docs/previews/gipergidroz-data-consent.png',
-  recommendation: '/docs/previews/gipergidroz-recommendations.png',
 };
 
 const politicsHtml =

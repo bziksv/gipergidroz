@@ -3,7 +3,6 @@ import fs from 'node:fs';
 const pages = [
   'index',
   'gipergidroz-podmyshek',
-  'gipergidroz-stop',
 ];
 
 function extractBody(html) {

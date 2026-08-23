@@ -6,11 +6,35 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
 
-const targetsPath = path.join(root, 'src/data/keyword-targets.json');
-const articlePath = path.join(
-  root,
-  'src/content/article/gipergidroz-ladoney-inner.html',
-);
+const page = process.argv[2] ?? 'ladoney';
+
+const PAGE_CONFIG = {
+  ladoney: {
+    targets: 'keyword-targets.json',
+    article: 'gipergidroz-ladoney-inner.html',
+  },
+  podmyshek: {
+    targets: 'keyword-targets-podmyshek.json',
+    article: 'gipergidroz-podmyshek-inner.html',
+  },
+  stop: {
+    targets: 'keyword-targets-stop.json',
+    article: 'gipergidroz-stop-inner.html',
+  },
+  lechenie: {
+    targets: 'keyword-targets-lechenie.json',
+    article: 'gipergidroz-lechenie-inner.html',
+  },
+};
+
+const cfg = PAGE_CONFIG[page];
+if (!cfg) {
+  console.error(`Unknown page: ${page}. Use: ladoney | podmyshek | stop | lechenie`);
+  process.exit(1);
+}
+
+const targetsPath = path.join(root, 'src/data', cfg.targets);
+const articlePath = path.join(root, 'src/content/article', cfg.article);
 
 const targets = JSON.parse(fs.readFileSync(targetsPath, 'utf8'));
 const html = fs.readFileSync(articlePath, 'utf8');
@@ -72,7 +96,43 @@ const STEM_PATTERNS = {
   потливость: 'потливост',
   гипергидроз: 'гипергидроз',
   ладонь: 'ладон',
+  подмышка: 'подмыш',
+  запах: 'запах',
+  купить: 'куп',
+  дезодорант: 'дезодорант',
+  аксиллярный: 'аксилл',
+  избавиться: 'избав',
+  одежда: 'одежд',
   стопа: 'стоп',
+  нога: 'ног',
+  обувь: 'обув',
+  грибок: 'гриб',
+  ионофорез: 'ионофорез',
+  аппарат: 'аппарат',
+  домашний: 'домашн',
+  сильный: 'сильн',
+  неприятный: 'неприятн',
+  помогать: 'помог',
+  избавляться: 'избав',
+  ступня: 'ступн',
+  ванночка: 'ванноч',
+  мазь: 'мазь',
+  крем: 'крем',
+  укол: 'укол',
+  гигиена: 'гигиен',
+  нормальный: 'нормальн',
+  индивидуальный: 'индивидуальн',
+  доставка: 'доставк',
+  спб: 'спб',
+  альмамед: 'альмамед',
+  профессиональный: 'профессиональн',
+  аптечный: 'аптечн',
+  подошвенный: 'подошвен',
+  эффективный: 'эффективн',
+  вода: 'вод',
+  носок: 'носк',
+  курс: 'курс',
+  повышенный: 'повышен',
   железа: 'желез',
   кожа: 'кож',
   лицо: 'лиц',
@@ -177,6 +237,7 @@ const pad = (s, n) => String(s).padEnd(n);
 const col = (s, n) => String(s).padStart(n);
 
 const stemW = Math.max(16, ...rows.map((r) => r.stem.length));
+console.log(`Страница: ${page}`);
 console.log(`${pad('Слово', stemW)}  ${col('Цель', 6)}  ${col('Факт', 6)}  ${col('%', 5)}`);
 console.log('-'.repeat(stemW + 24));
 

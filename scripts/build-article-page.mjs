@@ -56,3 +56,27 @@ buildPage({
   description:
     'Решите проблему гипергидроза ладоней раз и навсегда. Эффективные способы борьбы с потливостью рук от лучших специалистов. Подробности о процедурах, результатах и консультациях.',
 });
+
+buildPage({
+  slug: 'gipergidroz-podmyshek',
+  articleFile: 'gipergidroz-podmyshek-inner.html',
+  title: 'Лечение гипергидроза подмышек – избавьтесь от повышенной потливости',
+  description:
+    'Гипергидроз подмышек: причины, симптомы и лечение ионофорезом дома. Купить аппарат SwiSto3 на gipergidroz.su — доставка по России, электроды для подмышек в комплекте.',
+});
+
+buildPage({
+  slug: 'gipergidroz-stop',
+  articleFile: 'gipergidroz-stop-inner.html',
+  title: 'Лечение гипергидроза стоп – как избавиться от повышенной потливости ног',
+  description:
+    'Гипергидроз стоп: причины, запах, грибок и лечение ионофорезом дома. Купить аппарат SwiSto3 на gipergidroz.su — ванночки для стоп, доставка по России.',
+});
+
+buildPage({
+  slug: 'gipergidroz-lechenie',
+  articleFile: 'gipergidroz-lechenie-inner.html',
+  title: 'Гипергидроз: лечение, причины и методы — gipergidroz.su',
+  description:
+    'Гипергидроз: причины, симптомы и лечение ионофорезом дома. Ладони, стопы, подмышки — купить аппарат SwiSto3 на gipergidroz.su, доставка по России.',
+});
