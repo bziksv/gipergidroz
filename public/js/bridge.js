@@ -35,8 +35,34 @@
         }
 
         if (component === 'form' && action === 'submit') {
-          console.log('[form submit]', post);
-          resolve({ data: { html: '' } });
+          var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+          if (isLocal) {
+            console.log('[form submit — local dev]', post);
+            resolve({ data: { html: '' } });
+            return;
+          }
+          fetch('/api/submit.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify(post),
+          })
+            .then(function (r) {
+              return r.json().then(function (j) {
+                return { ok: r.ok, j: j };
+              });
+            })
+            .then(function (res) {
+              if (res.ok && res.j && res.j.status === 'success') {
+                resolve({ data: { html: '' } });
+              } else {
+                reject({
+                  errors: [{ message: (res.j && res.j.message) || 'Ошибка отправки' }],
+                });
+              }
+            })
+            .catch(function (err) {
+              reject({ errors: [{ message: String(err) }] });
+            });
           return;
         }
 

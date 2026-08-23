@@ -1,0 +1,7 @@
+<?php
+// Copy to config.php on the server to override defaults.
+return [
+    'to' => 'sale@gipergidroz.su',
+    'from' => 'noreply@gipergidroz.su',
+    'site' => 'gipergidroz.su',
+];
