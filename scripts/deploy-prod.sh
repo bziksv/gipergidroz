@@ -12,13 +12,17 @@ npm ci
 npm run build
 
 echo "==> Upload dist to $HOST:$WEBROOT"
+TARBALL="$(mktemp /tmp/gipergidroz-dist.XXXXXX.tar.gz)"
+trap 'rm -f "$TARBALL"' EXIT
+tar czf "$TARBALL" -C dist .
+scp "$TARBALL" "$HOST:/tmp/gipergidroz-dist.tar.gz"
 ssh "$HOST" "rm -rf \
   $WEBROOT/docs/gipergidroz-cookies \
   $WEBROOT/docs/gipergidroz-personal-data \
   $WEBROOT/docs/gipergidroz-data-consent \
   $WEBROOT/docs/gipergidroz-recommendations \
-  $WEBROOT/css/legal.css"
-tar czf - -C dist . | ssh "$HOST" "cd $WEBROOT && tar xzf -"
+  $WEBROOT/css/legal.css 2>/dev/null; \
+  cd $WEBROOT && tar xzf /tmp/gipergidroz-dist.tar.gz && rm -f /tmp/gipergidroz-dist.tar.gz"
 
 echo "==> Update git mirror on server"
 ssh "$HOST" "bash -lc '
