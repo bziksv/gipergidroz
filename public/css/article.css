@@ -34,6 +34,19 @@
   height: auto;
 }
 
+.seo-article__figure--contain {
+  text-align: center;
+  background: #f9f7f8;
+}
+
+.seo-article__figure--contain img {
+  width: auto;
+  max-width: 100%;
+  max-height: 520px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
 .seo-article__figure figcaption {
   padding: 12px 16px;
   font-size: 13px;
@@ -640,8 +653,11 @@
 .seo-split__media img {
   width: 100%;
   height: auto;
+  max-height: 520px;
+  object-fit: contain;
   border-radius: 10px;
   display: block;
+  background: #f9f7f8;
 }
 
 .seo-steps {
