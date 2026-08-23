@@ -5,6 +5,7 @@ interface Props {
   title: string;
   description: string;
   ogImage?: string;
+  canonicalUrl: string;
   bodyClass: string;
   bodyHtml: string;
   hasPageCss?: boolean;
@@ -15,6 +16,7 @@ const {
   title,
   description,
   ogImage = 'https://gipergidroz.su/upload/ranx.landing/37a/ax36ofd6z686peufg7yum468083km7bl.png',
+  canonicalUrl,
   bodyClass,
   bodyHtml,
   hasPageCss = false,
@@ -44,6 +46,8 @@ const pageJs =
     <title>{title}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
     {hasPageCss && <link href={pageCss} type="text/css" rel="stylesheet" />}
     {hasPageCss && (
       <link href="/css/gallery-slider.css" type="text/css" rel="stylesheet" />
@@ -85,11 +89,12 @@ const pageJs =
         max-height: unset !important;
       }
     </style>
-    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
     <script is:inline>
       if (!window.BX) window.BX = {};
       if (!window.BX.message)
