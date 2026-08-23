@@ -62,16 +62,18 @@ npm run dev
 - Проверка ключевых слов: `node scripts/check-article-keywords.mjs [ladoney|podmyshek|stop]`
 - Цели: `src/data/keyword-targets*.json`
 
-## Юридические документы
+## Юридические документы (PNG)
 
-| Страница | URL |
+На сайте опубликованы только PNG-превью. HTML-страницы удалены; старые URL редиректят на картинки.
+
+| Документ | URL |
 |----------|-----|
-| Политика cookie | `/docs/gipergidroz-cookies` |
-| Политика ПДн | `/docs/gipergidroz-personal-data` |
-| Согласие на ПДн | `/docs/gipergidroz-data-consent` |
-| Рекомендательные технологии | `/docs/gipergidroz-recommendations` |
+| Политика cookie | `/docs/previews/gipergidroz-cookies.png` |
+| Политика ПДн | `/docs/previews/gipergidroz-personal-data.png` |
+| Согласие на ПДн | `/docs/previews/gipergidroz-data-consent.png` |
+| Рекомендательные технологии | `/docs/previews/gipergidroz-recommendations.png` |
 
-Реквизиты оператора: `src/data/legal.json`. Синхронизация с gnkmed-шаблонами: `npm run sync:legal`.
+Ссылки в футере, формах и cookie-баннере: `src/data/legal.json` → `scripts/generate-bridge.mjs`.
 
 ## Формы заявок
 

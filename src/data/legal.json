@@ -12,9 +12,9 @@
   "address_legal": "394026, Воронеж, Московский пр-кт, 19, помещ. 1/46",
   "address_store": "394026, Воронеж, Московский пр-кт, 19, помещ. 1/46",
   "urls": {
-    "cookie": "/docs/gipergidroz-cookies",
-    "personal_data": "/docs/gipergidroz-personal-data",
-    "consent": "/docs/gipergidroz-data-consent",
-    "recommendation": "/docs/gipergidroz-recommendations"
+    "cookie": "/docs/previews/gipergidroz-cookies.png",
+    "personal_data": "/docs/previews/gipergidroz-personal-data.png",
+    "consent": "/docs/previews/gipergidroz-data-consent.png",
+    "recommendation": "/docs/previews/gipergidroz-recommendations.png"
   }
 }

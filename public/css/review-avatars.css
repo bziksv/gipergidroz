@@ -1,0 +1,15 @@
+/* Отзывы: иконки вместо фото */
+.block12-4-avatar--icon {
+  background: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.block12-4-avatar--icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}

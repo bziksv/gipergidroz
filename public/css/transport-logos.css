@@ -1,0 +1,28 @@
+/* Carrier logos: DL and Boxberry PNGs have large empty margins in the file */
+.block13-2-slider,
+.block13-2-brand-items,
+.block13-2-slide-wrap,
+.block13-2-brand-item {
+  overflow: visible;
+}
+
+.block13-2-brand-item {
+  width: auto;
+}
+
+.block13-2-brand-item img {
+  width: 110px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+.block13-2-slide-wrap {
+  padding: 0 48px;
+}
+
+.block13-2-brand-item img[alt="Деловые Линии"],
+.block13-2-brand-item img[alt="Boxberry"] {
+  transform: scale(2.5);
+  transform-origin: center center;
+}

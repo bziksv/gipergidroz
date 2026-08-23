@@ -12,6 +12,12 @@ npm ci
 npm run build
 
 echo "==> Upload dist to $HOST:$WEBROOT"
+ssh "$HOST" "rm -rf \
+  $WEBROOT/docs/gipergidroz-cookies \
+  $WEBROOT/docs/gipergidroz-personal-data \
+  $WEBROOT/docs/gipergidroz-data-consent \
+  $WEBROOT/docs/gipergidroz-recommendations \
+  $WEBROOT/css/legal.css"
 tar czf - -C dist . | ssh "$HOST" "cd $WEBROOT && tar xzf -"
 
 echo "==> Update git mirror on server"

@@ -45,6 +45,15 @@ const pageJs =
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="description" content={description} />
     {hasPageCss && <link href={pageCss} type="text/css" rel="stylesheet" />}
+    {hasPageCss && (
+      <link href="/css/gallery-slider.css" type="text/css" rel="stylesheet" />
+    )}
+    {hasPageCss && (
+      <link href="/css/review-avatars.css" type="text/css" rel="stylesheet" />
+    )}
+    {hasPageCss && (
+      <link href="/css/transport-logos.css" type="text/css" rel="stylesheet" />
+    )}
     <link href={templateCss} type="text/css" rel="stylesheet" />
     {extraCss && <link href={extraCss} type="text/css" rel="stylesheet" />}
     <style>body { font-family: "IBM Plex Sans", Arial, sans-serif; }</style>

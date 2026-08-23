@@ -1,0 +1,18 @@
+/* Фотогалерея: полный прибор в кадре, без обрезки cover */
+.block10-1-item a.fancybox-slider {
+  background-size: contain !important;
+  background-position: center center !important;
+  background-color: #f4f6f8;
+}
+
+.block10-1-item:not(.slick-current) a.fancybox-slider {
+  opacity: 0.55;
+}
+
+.block10-1 .dark-hover {
+  background: transparent !important;
+}
+
+.block10-1 .dark-hover:hover {
+  opacity: 0 !important;
+}
