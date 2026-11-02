@@ -50,6 +50,15 @@ $email = field($data, 'EMAIL', 200);
 $subject = field($data, 'SUBJECT', 300);
 $question = field($data, 'QUESTION', 2000);
 $source = field($data, 'SOURCE', 500);
+$captchaToken = field($data, 'captcha_token', 500);
+$captchaAnswer = field($data, 'captcha_answer', 16);
+
+require __DIR__ . '/_captcha.php';
+if (!captcha_check($captchaToken, $captchaAnswer, $config)) {
+    http_response_code(400);
+    echo json_encode(['status' => 'error', 'message' => 'captcha']);
+    exit;
+}
 
 $allowedForms = ['ranx_landing_form_callback', 'ranx_landing_form_order'];
 if (!in_array($formCode, $allowedForms, true)) {

@@ -1,6 +1,16 @@
 import { defineConfig } from 'astro/config';
+import { attachCaptchaDevApi } from './scripts/captcha.mjs';
 
 export default defineConfig({
+  vite: {
+    plugins: [
+      {
+        name: 'gipergidroz-captcha',
+        configureServer: attachCaptchaDevApi,
+        configurePreviewServer: attachCaptchaDevApi,
+      },
+    ],
+  },
   devToolbar: {
     enabled: false,
   },

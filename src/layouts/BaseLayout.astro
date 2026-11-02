@@ -59,6 +59,7 @@ const pageJs =
       <link href="/css/transport-logos.css" type="text/css" rel="stylesheet" />
     )}
     <link href={templateCss} type="text/css" rel="stylesheet" />
+    <link href="/css/captcha.css" type="text/css" rel="stylesheet" />
     {extraCss && <link href={extraCss} type="text/css" rel="stylesheet" />}
     <style>body { font-family: "IBM Plex Sans", Arial, sans-serif; }</style>
     <style>
@@ -128,5 +129,6 @@ const pageJs =
     <Fragment set:html={bodyHtml.trim()} />
     <YandexMetrika />
     <script is:inline src="/js/bridge.js"></script>
+    <script is:inline src="/js/captcha.js"></script>
   </body>
 </html>
